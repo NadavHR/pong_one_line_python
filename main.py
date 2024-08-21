@@ -1,6 +1,6 @@
 (lambda: (memory := {
-        'main': lambda mem: mem['while'](lambda: not mem['is_game_over'], lambda a, b: mem['update'](mem)),
-        'while': lambda condition, code: __import__('functools').reduce(code, iter(condition, False)),
+        'main': lambda mem: mem['while'](lambda: not mem['is_game_over'], lambda: mem['update'](mem)),
+        'while': lambda condition, code: __import__('functools').reduce(lambda a, b: code(), iter(condition, False)),
         'WIDTH': 100,
         'HEIGHT': 50,
         'PADDLE_HEIGHT': 20,
@@ -88,4 +88,3 @@
 # every function is written as a lambda
 # every function that needs something from memory needs to get memory as a parameter
 # memory['main'] is the main function
-# when using a while the code parameter should always get 2 parameters
